@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/opt/src/triliumquest/src/../include/triliumquest.hpp
+eosio/eosio.hpp
+-
+eosio/asset.hpp
+-
+eosio/symbol.hpp
+-
+eosio/name.hpp
+-
+eosio/multi_index.hpp
+-
+
+/opt/src/triliumquest/src/triliumquest.cpp
+triliumquest.hpp
+-
+

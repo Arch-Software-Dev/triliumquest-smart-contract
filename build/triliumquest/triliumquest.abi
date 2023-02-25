@@ -1,0 +1,88 @@
+{
+    "____comment": "This file was generated with eosio-abigen. DO NOT EDIT ",
+    "version": "eosio::abi/1.1",
+    "types": [],
+    "structs": [
+        {
+            "name": "nftstaging",
+            "base": "",
+            "fields": [
+                {
+                    "name": "nft_id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "owner",
+                    "type": "name"
+                },
+                {
+                    "name": "user_name",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "tlmstaging",
+            "base": "",
+            "fields": [
+                {
+                    "name": "user_name",
+                    "type": "string"
+                },
+                {
+                    "name": "amount",
+                    "type": "asset"
+                },
+                {
+                    "name": "owner",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "withdrawnft",
+            "base": "",
+            "fields": [
+                {
+                    "name": "nft_id",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "withdrawtlm",
+            "base": "",
+            "fields": []
+        }
+    ],
+    "actions": [
+        {
+            "name": "withdrawnft",
+            "type": "withdrawnft",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "withdrawtlm",
+            "type": "withdrawtlm",
+            "ricardian_contract": ""
+        }
+    ],
+    "tables": [
+        {
+            "name": "itemstaging",
+            "type": "nftstaging",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "tlmstaging",
+            "type": "tlmstaging",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        }
+    ],
+    "ricardian_clauses": [],
+    "variants": []
+}

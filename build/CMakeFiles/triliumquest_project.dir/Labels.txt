@@ -1,0 +1,14 @@
+# Target labels
+ triliumquest_project
+# Source files and their labels
+/opt/src/triliumquest/build/CMakeFiles/triliumquest_project
+/opt/src/triliumquest/build/CMakeFiles/triliumquest_project.rule
+/opt/src/triliumquest/build/CMakeFiles/triliumquest_project-complete.rule
+/opt/src/triliumquest/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-install.rule
+/opt/src/triliumquest/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-mkdir.rule
+/opt/src/triliumquest/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-download.rule
+/opt/src/triliumquest/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-update.rule
+/opt/src/triliumquest/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-patch.rule
+/opt/src/triliumquest/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-configure.rule
+/opt/src/triliumquest/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-build.rule
+/opt/src/triliumquest/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-test.rule

@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/opt/src/triliumquest/build/CMakeFiles/triliumquest_project"
+		},
+		{
+			"file" : "/opt/src/triliumquest/build/CMakeFiles/triliumquest_project.rule"
+		},
+		{
+			"file" : "/opt/src/triliumquest/build/CMakeFiles/triliumquest_project-complete.rule"
+		},
+		{
+			"file" : "/opt/src/triliumquest/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-install.rule"
+		},
+		{
+			"file" : "/opt/src/triliumquest/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-mkdir.rule"
+		},
+		{
+			"file" : "/opt/src/triliumquest/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-download.rule"
+		},
+		{
+			"file" : "/opt/src/triliumquest/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-update.rule"
+		},
+		{
+			"file" : "/opt/src/triliumquest/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-patch.rule"
+		},
+		{
+			"file" : "/opt/src/triliumquest/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-configure.rule"
+		},
+		{
+			"file" : "/opt/src/triliumquest/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-build.rule"
+		},
+		{
+			"file" : "/opt/src/triliumquest/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-test.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"triliumquest_project"
+		],
+		"name" : "triliumquest_project"
+	}
+}
