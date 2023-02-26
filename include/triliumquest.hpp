@@ -2,6 +2,7 @@
 #include <eosio/asset.hpp>
 #include <eosio/symbol.hpp>
 #include <eosio/name.hpp>
+#include <eosio/crypto.hpp>
 #include <eosio/multi_index.hpp>
 
 using namespace eosio;
@@ -29,6 +30,12 @@ CONTRACT triliumquest : public contract {
 	std::string user_name;
 
 	uint64_t primary_key() const { return nft_id; }
+
+	// Secondary index for user_name
+        eosio::checksum256 get_user_name() const { return eosio::sha256(user_name.c_str(), user_name.size()); }
+
+        // Define the index name and the function to create the index
+        typedef eosio::multi_index<"nftstaging"_n, nftstaging, eosio::indexed_by<"byusername"_n, eosio::const_mem_fun<nftstaging, eosio::checksum256, &nftstaging::get_user_name>>> nft_staging_index;
       };
 
       TABLE tlmstaging {
@@ -37,6 +44,13 @@ CONTRACT triliumquest : public contract {
 	name owner;
 
 	uint64_t primary_key() const { return owner.value; }
+
+	// Secondary index for user_name
+        eosio::checksum256 get_user_name() const { return eosio::sha256(user_name.c_str(), user_name.size()); }
+
+        // Define the index name and the function to create the index
+        typedef eosio::multi_index<"tlmstaging"_n, tlmstaging,
+         eosio::indexed_by<"byusername"_n, eosio::const_mem_fun<tlmstaging, eosio::checksum256, &tlmstaging::get_user_name>>> tlm_staging_index;
       };
 
       typedef eosio::multi_index<"itemstaging"_n, nftstaging> nft_staging_index;

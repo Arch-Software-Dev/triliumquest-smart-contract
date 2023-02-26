@@ -76,6 +76,13 @@
             "key_types": []
         },
         {
+            "name": "nftstaging",
+            "type": "nftstaging",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
             "name": "tlmstaging",
             "type": "tlmstaging",
             "index_type": "i64",
