@@ -62,12 +62,16 @@ void triliumquest::withdrawnft(uint64_t nft_id) {
   // Check that the owner is the one requesting the unstake
   require_auth(stake->owner);
 
-  // Transfer the NFT back to the owner
-  auto nft = _nfts.get(nft_id, "NFT not found");
-  check(nft.owner == stake->owner, "NFT owner does not match stake owner");
-  _nfts.modify(nft, get_self(), [&](auto& n) {
-    n.owner = stake->owner;
-  });
+  // Transfer the NFT back to the original owner
+  action(
+    permission_level{get_self(), "active"_n},
+    "atomicassets"_n,
+    "transfer"_n,
+    std::make_tuple(get_self(), stake->owner, asset(nft_id, symbol("NFT", 0)), "Withdraw NFT")
+  ).send();
+
+  // Remove the NFT record
+  _nfts.erase(stake);
 }
 
 [[eosio::action]]
