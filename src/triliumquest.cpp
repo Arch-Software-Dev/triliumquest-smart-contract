@@ -28,14 +28,14 @@ void triliumquest::depositnft(name from, name to, asset quantity, std::string me
 
 [[eosio::on_notify("alien.worlds::transfer")]]
 void triliumquest::deposittlm(name from, name to, asset quantity, std::string memo) {
-  // Check if the transfer is for this contract
-  if (to != get_self()) {
+  // Check if the transfer is for this contract and has user_name in memo
+  if (to != get_self() || memo.find("user_name:") == std::string::npos) {
     return;
   }
 
-  // Parse the memo to get the NFT ID
+  // Parse the memo to get the user name
   size_t separator_pos = memo.find("user_name:");
-  std::string user_name = memo.substr(separator_pos + 1);
+  std::string user_name = memo.substr(separator_pos + 10);
 
   // Check that the asset is TLM
   check(quantity.symbol == symbol("TLM", 4), "Invalid symbol");
@@ -44,12 +44,19 @@ void triliumquest::deposittlm(name from, name to, asset quantity, std::string me
   tlm_staging_index _tlm(get_self(), get_self().value);
   auto existing_stake = _tlm.find(from.value);
 
-  // Store the stake
-  _tlm.emplace(get_self(), [&](auto& s) {
-    s.owner = from;
-    s.user_name = user_name;
-    s.amount = quantity;
-  });
+  if (existing_stake == _tlm.end()) {
+    // Store the stake
+    _tlm.emplace(get_self(), [&](auto& s) {
+      s.owner = from;
+      s.user_name = user_name;
+      s.amount = quantity;
+    });
+  } else {
+    // Update the stake
+    _tlm.modify(existing_stake, same_payer, [&](auto& s) {
+      s.amount += quantity;
+    });
+  }
 }
 
 [[eosio::action]]
