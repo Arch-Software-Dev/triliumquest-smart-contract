@@ -69,13 +69,6 @@
     ],
     "tables": [
         {
-            "name": "itemstaging",
-            "type": "nftstaging",
-            "index_type": "i64",
-            "key_names": [],
-            "key_types": []
-        },
-        {
             "name": "nftstaging",
             "type": "nftstaging",
             "index_type": "i64",

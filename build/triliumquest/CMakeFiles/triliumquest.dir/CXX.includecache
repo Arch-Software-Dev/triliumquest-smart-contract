@@ -6,6 +6,28 @@
 
 #IncludeRegexTransform: 
 
+/opt/src/triliumquest/src/../include/atomicassets-interface.hpp
+eosio/eosio.hpp
+-
+eosio/singleton.hpp
+-
+eosio/asset.hpp
+-
+atomicdata.hpp
+-
+
+/opt/src/triliumquest/src/../include/atomicdata.hpp
+eosio/eosio.hpp
+-
+base58.hpp
+/opt/src/triliumquest/src/../include/base58.hpp
+
+/opt/src/triliumquest/src/../include/base58.hpp
+string
+-
+vector
+-
+
 /opt/src/triliumquest/src/../include/triliumquest.hpp
 eosio/eosio.hpp
 -
@@ -18,6 +40,8 @@ eosio/name.hpp
 eosio/crypto.hpp
 -
 eosio/multi_index.hpp
+-
+atomicassets-interface.hpp
 -
 
 /opt/src/triliumquest/src/triliumquest.cpp

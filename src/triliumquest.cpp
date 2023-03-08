@@ -1,29 +1,29 @@
 #include <triliumquest.hpp>
 
-[[eosio::on_notify("atomicassets::transfer")]]
-void triliumquest::depositnft(name from, name to, asset quantity, std::string memo) {
-  // Check if the transfer is for this contract
-  if (to != get_self()) {
+[[eosio::on_notify("atomicassets::logtransfer")]]
+void triliumquest::depositnft(name collection_name, name from, name to, vector<uint64_t> asset_ids, string memo) {
+  if (to != get_self() || collection_name != "triliumquest"_n) {
     return;
   }
 
-  // Parse the memo to get the NFT ID
-  size_t separator_pos = memo.find(":");
-  check(separator_pos != std::string::npos, "Invalid memo format");
-  uint64_t nft_id = std::stoull(memo.substr(0, separator_pos));
-  std::string user_name = memo.substr(separator_pos + 1);
+  // Parse the memo for the user_name
+  size_t staking_pos = memo.find("staking%");
+  if (staking_pos == std::string::npos) {
+    return;
+  }
 
-  // Check if the user has already staked the NFT
-  nft_staging_index _nfts(get_self(), get_self().value);
-  auto existing_stake = _nfts.find(nft_id);
-  check(existing_stake == _nfts.end(), "NFT is already staked");
+  memo.erase(0, staking_pos + 8);
+  nftstaging::nft_staging_index nft_stakes(get_self(), get_self().value);
 
-  // Store the NFT
-  _nfts.emplace(get_self(), [&](auto& n) {
-    n.nft_id = nft_id;
-    n.owner = from;
-    n.user_name = user_name;
-  });
+
+  for (auto id : asset_ids) {
+    // Store the NFT stake
+    nft_stakes.emplace(get_self(), [&](auto& n) {
+      n.owner = from;
+      n.nft_id = id;
+      n.user_name = memo;
+    });
+  }
 }
 
 [[eosio::on_notify("alien.worlds::transfer")]]
@@ -62,7 +62,7 @@ void triliumquest::deposittlm(name from, name to, asset quantity, std::string me
 [[eosio::action]]
 void triliumquest::withdrawnft(uint64_t nft_id) {
   // Find the NFT
-  nft_staging_index _nfts(get_self(), get_self().value);
+  nftstaging::nft_staging_index _nfts(get_self(), get_self().value);
   auto stake = _nfts.find(nft_id);
   check(stake != _nfts.end(), "NFT is not staked");
 

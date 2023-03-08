@@ -4,6 +4,7 @@
 #include <eosio/name.hpp>
 #include <eosio/crypto.hpp>
 #include <eosio/multi_index.hpp>
+#include <atomicassets-interface.hpp>
 
 using namespace eosio;
 
@@ -11,8 +12,8 @@ CONTRACT triliumquest : public contract {
    public:
       using contract::contract;
 
-      [[eosio::on_notify("atomicassets::transfer")]]
-      void depositnft(name from, name to, asset quantity, std::string memo);
+      [[eosio::on_notify("atomicassets::logtransfer")]]
+      void depositnft(name collection_name, name from, name to, vector<uint64_t> asset_ids, string memo);
 
       ACTION withdrawnft(uint64_t nft_id);
 
@@ -53,6 +54,5 @@ CONTRACT triliumquest : public contract {
          eosio::indexed_by<"byusername"_n, eosio::const_mem_fun<tlmstaging, eosio::checksum256, &tlmstaging::get_user_name>>> tlm_staging_index;
       };
 
-      typedef eosio::multi_index<"itemstaging"_n, nftstaging> nft_staging_index;
       typedef eosio::multi_index<"tlmstaging"_n, tlmstaging> tlm_staging_index;
 };
