@@ -22,13 +22,17 @@ CONTRACT triliumquest : public contract {
 
       ACTION withdrawtlm();
 
+      ACTION wipeall();
+
       using withdrawnft_action = action_wrapper<"withdrawnft"_n, &triliumquest::withdrawnft>;
       using withdrawtlm_action = action_wrapper<"withdrawtlm"_n, &triliumquest::withdrawtlm>;
+      using wipeall_action = action_wrapper<"wipeall"_n, &triliumquest::wipeall>;
   private:
       TABLE nftstaging {
         uint64_t nft_id;
 	name owner;
 	std::string user_name;
+        std::string nft_name;
 
 	uint64_t primary_key() const { return nft_id; }
 

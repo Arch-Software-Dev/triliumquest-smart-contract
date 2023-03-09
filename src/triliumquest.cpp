@@ -15,16 +15,53 @@ void triliumquest::depositnft(name collection_name, name from, name to, vector<u
   memo.erase(0, staking_pos + 8);
   nftstaging::nft_staging_index nft_stakes(get_self(), get_self().value);
 
+  // Get the assets for the given account
+  atomicassets::assets_t assets = atomicassets::get_assets(to);
 
-  for (auto id : asset_ids) {
+  for (const auto& id : asset_ids) {
+    // Find the asset with the given id
+    auto itA = assets.find(id);
+    if (itA == assets.end()) continue;
+   
+    auto template_id = itA->template_id;
+
+    // Get templates for the given collection
+    atomicassets::templates_t templates_table = atomicassets::get_templates(collection_name);
+
+    // Find the template with the given ID
+    auto it = templates_table.find(template_id);
+    if (it == templates_table.end()) {
+        // Template not found
+        return;
+    }
+
+    // Get the schema for the template
+    auto schemas = atomicassets::get_schemas(collection_name);
+    const auto& schema_id = it->schema_name.value;
+    auto schema_it = schemas.find(schema_id);
+    if (schema_it == schemas.end()) {
+        // handle error
+    }
+
+    // Deserialize the immutable data using the schema format
+    ATTRIBUTE_MAP immutable_data = atomicdata::deserialize(it->immutable_serialized_data, schema_it->format);
+
+    // Extract the attribute you need (e.g. "name")
+    auto name_it = immutable_data.find("name");
+    
+    const auto& nft_name = name_it != immutable_data.end() ? std::get<std::string>(name_it->second) : "Name not found";;
+
     // Store the NFT stake
     nft_stakes.emplace(get_self(), [&](auto& n) {
       n.owner = from;
       n.nft_id = id;
       n.user_name = memo;
+      n.nft_name = nft_name;
     });
   }
 }
+
+
 
 [[eosio::on_notify("alien.worlds::transfer")]]
 void triliumquest::deposittlm(name from, name to, asset quantity, std::string memo) {
@@ -58,6 +95,27 @@ void triliumquest::deposittlm(name from, name to, asset quantity, std::string me
     });
   }
 }
+
+[[eosio::action]]
+void triliumquest::wipeall() {
+  require_auth(get_self());
+
+  // Clear staged NFTs
+  nftstaging::nft_staging_index _nfts(get_self(), get_self().value);
+  auto itr1 = _nfts.begin();
+  while (itr1 != _nfts.end()) {
+    itr1 = _nfts.erase(itr1);
+  }
+
+  // Clear staged TLM
+  tlm_staging_index _tlm(get_self(), get_self().value);
+  auto itr2 = _tlm.begin();
+  while (itr2 != _tlm.end()) {
+    itr2 = _tlm.erase(itr2);
+  }
+}
+
+
 
 [[eosio::action]]
 void triliumquest::withdrawnft(uint64_t nft_id) {

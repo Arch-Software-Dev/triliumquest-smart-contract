@@ -18,6 +18,10 @@
                 {
                     "name": "user_name",
                     "type": "string"
+                },
+                {
+                    "name": "nft_name",
+                    "type": "string"
                 }
             ]
         },
@@ -40,6 +44,11 @@
             ]
         },
         {
+            "name": "wipeall",
+            "base": "",
+            "fields": []
+        },
+        {
             "name": "withdrawnft",
             "base": "",
             "fields": [
@@ -57,6 +66,11 @@
     ],
     "actions": [
         {
+            "name": "wipeall",
+            "type": "wipeall",
+            "ricardian_contract": "Administrative action to wipe all data. Not meant to be used in production."
+        },
+        {
             "name": "withdrawnft",
             "type": "withdrawnft",
             "ricardian_contract": "When a user requests to withdraw their NFT, the NFT is transferred back to the original owner and the NFT record is deleted from the NFT staging table."
@@ -64,7 +78,7 @@
         {
             "name": "withdrawtlm",
             "type": "withdrawtlm",
-            "ricardian_contract": "When a user requests to withdraw their TLM tokens, the tokens are transferred back to the original owner and the TLM record is deleted from the TLM staging table."
+            "ricardian_contract": "When a user requests to withdraw their TLM tokens, the tokens are transferred back to the original owner and the TLM record is deleted from the TLM staging table"
         }
     ],
     "tables": [

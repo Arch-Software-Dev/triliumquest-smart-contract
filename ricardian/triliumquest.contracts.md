@@ -12,4 +12,8 @@ When a user requests to withdraw their NFT, the NFT is transferred back to the o
 
 <h1 class="contract"> withdrawtlm </h1>
 
-When a user requests to withdraw their TLM tokens, the tokens are transferred back to the original owner and the TLM record is deleted from the TLM staging table.
+When a user requests to withdraw their TLM tokens, the tokens are transferred back to the original owner and the TLM record is deleted from the TLM staging table
+
+<h1 class="contract">wipeall</h1>
+
+Administrative action to wipe all data. Not meant to be used in production.
