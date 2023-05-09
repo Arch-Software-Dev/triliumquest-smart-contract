@@ -12,10 +12,6 @@
                     "type": "uint64"
                 },
                 {
-                    "name": "owner",
-                    "type": "name"
-                },
-                {
                     "name": "user_name",
                     "type": "string"
                 },
@@ -36,10 +32,6 @@
                 {
                     "name": "amount",
                     "type": "asset"
-                },
-                {
-                    "name": "owner",
-                    "type": "name"
                 }
             ]
         },
@@ -55,13 +47,34 @@
                 {
                     "name": "nft_id",
                     "type": "uint64"
+                },
+                {
+                    "name": "wax_id",
+                    "type": "name"
+                },
+                {
+                    "name": "level",
+                    "type": "uint64"
+                },
+                {
+                    "name": "schema_name",
+                    "type": "name"
+                },
+                {
+                    "name": "template_id",
+                    "type": "uint64"
                 }
             ]
         },
         {
             "name": "withdrawtlm",
             "base": "",
-            "fields": []
+            "fields": [
+                {
+                    "name": "wax_id",
+                    "type": "name"
+                }
+            ]
         }
     ],
     "actions": [

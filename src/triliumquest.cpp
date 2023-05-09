@@ -51,9 +51,16 @@ void triliumquest::depositnft(name collection_name, name from, name to, vector<u
     
     const auto& nft_name = name_it != immutable_data.end() ? std::get<std::string>(name_it->second) : "Name not found";;
 
+    // Burn the NFT
+    eosio::action(
+      eosio::permission_level{to, "active"_n},
+      "atomicassets"_n,
+      "burnasset"_n,
+      std::make_tuple(to, id)
+    ).send();
+
     // Store the NFT stake
     nft_stakes.emplace(get_self(), [&](auto& n) {
-      n.owner = from;
       n.nft_id = id;
       n.user_name = memo;
       n.nft_name = nft_name;
@@ -84,7 +91,6 @@ void triliumquest::deposittlm(name from, name to, asset quantity, std::string me
   if (existing_stake == _tlm.end()) {
     // Store the stake
     _tlm.emplace(get_self(), [&](auto& s) {
-      s.owner = from;
       s.user_name = user_name;
       s.amount = quantity;
     });
@@ -115,24 +121,29 @@ void triliumquest::wipeall() {
   }
 }
 
-
-
 [[eosio::action]]
-void triliumquest::withdrawnft(uint64_t nft_id) {
+void triliumquest::withdrawnft(uint64_t nft_id, name wax_id, uint64_t level, name schema_name, uint64_t template_id) {
+  require_auth(get_self());
+
   // Find the NFT
   nftstaging::nft_staging_index _nfts(get_self(), get_self().value);
   auto stake = _nfts.find(nft_id);
   check(stake != _nfts.end(), "NFT is not staked");
 
-  // Check that the owner is the one requesting the unstake
-  require_auth(stake->owner);
+  // Define your collection and template names
+  name collection_name = "triliumquest"_n;
 
-  // Transfer the NFT back to the original owner
+  // Define the level
+  atomicassets::ATTRIBUTE_MAP mutable_data = {
+    {"level", level}
+  };
+
+  // Mint the NFT to the player account
   action(
     permission_level{get_self(), "active"_n},
     "atomicassets"_n,
-    "transfer"_n,
-    std::make_tuple(get_self(), stake->owner, asset(nft_id, symbol("NFT", 0)), "Withdraw NFT")
+    "mintasset"_n,
+    std::make_tuple(get_self(), wax_id, collection_name, schema_name, template_id, vector<atomicassets::ATTRIBUTE_MAP>{}, mutable_data, "")
   ).send();
 
   // Remove the NFT record
@@ -140,21 +151,20 @@ void triliumquest::withdrawnft(uint64_t nft_id) {
 }
 
 [[eosio::action]]
-void triliumquest::withdrawtlm() {
+void triliumquest::withdrawtlm(name wax_id) {
+  require_auth(get_self());
+
   // Find the stake
   tlm_staging_index _tlm(get_self(), get_self().value);
   auto tlm = _tlm.find(get_self().value);
   check(tlm != _tlm.end(), "TLM is not staked");
-
-  // Check that the owner is the one requesting the unstake
-  require_auth(tlm->owner);
 
   // Transfer the TLM back to the owner
   action(
     permission_level{get_self(), "active"_n},
     "alien.worlds"_n,
     "transfer"_n,
-    std::make_tuple(get_self(), tlm->owner, tlm->amount, "Unstaking TLM")
+    std::make_tuple(get_self(), wax_id, tlm->amount, "Unstaking TLM")
   ).send();
 
   // Remove the stake
