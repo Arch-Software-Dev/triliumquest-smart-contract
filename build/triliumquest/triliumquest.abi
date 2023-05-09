@@ -4,11 +4,29 @@
     "types": [],
     "structs": [
         {
+            "name": "addnft",
+            "base": "",
+            "fields": [
+                {
+                    "name": "user_name",
+                    "type": "string"
+                },
+                {
+                    "name": "nft_name",
+                    "type": "string"
+                },
+                {
+                    "name": "level",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
             "name": "nftstaging",
             "base": "",
             "fields": [
                 {
-                    "name": "nft_id",
+                    "name": "id",
                     "type": "uint64"
                 },
                 {
@@ -18,6 +36,10 @@
                 {
                     "name": "nft_name",
                     "type": "string"
+                },
+                {
+                    "name": "level",
+                    "type": "uint64"
                 }
             ]
         },
@@ -45,15 +67,11 @@
             "base": "",
             "fields": [
                 {
-                    "name": "nft_id",
-                    "type": "uint64"
-                },
-                {
                     "name": "wax_id",
                     "type": "name"
                 },
                 {
-                    "name": "level",
+                    "name": "id",
                     "type": "uint64"
                 },
                 {
@@ -78,6 +96,11 @@
         }
     ],
     "actions": [
+        {
+            "name": "addnft",
+            "type": "addnft",
+            "ricardian_contract": ""
+        },
         {
             "name": "wipeall",
             "type": "wipeall",
