@@ -49,26 +49,91 @@ void triliumquest::depositnft(name collection_name, name from, name to, vector<u
     // Extract the attribute you need (e.g. "name")
     auto name_it = immutable_data.find("name");
     
+    // Deserialize the mutable data using the schema format
+    ATTRIBUTE_MAP mutable_data = atomicdata::deserialize(itA->mutable_serialized_data, schema_it->format);
+
+    // default of 1
+    uint64_t level = 1;
+
+    // Search for the "level" attribute in mutable data
+    auto level_it = mutable_data.find("level");
+
+    // If found, update the level variable
+    if (level_it != mutable_data.end()) {
+	// Extract the std::string from the std::variant
+        std::string level_str = std::get<std::string>(level_it->second);
+    
+        // Convert the std::string to an integer
+        level = atoi(level_str.c_str());
+    }
+
     const auto& nft_name = name_it != immutable_data.end() ? std::get<std::string>(name_it->second) : "Name not found";;
 
     // Burn the NFT
+    /*
     eosio::action(
       eosio::permission_level{to, "active"_n},
       "atomicassets"_n,
       "burnasset"_n,
       std::make_tuple(to, id)
     ).send();
+    */
 
     // Store the NFT stake
     nft_stakes.emplace(get_self(), [&](auto& n) {
-      n.nft_id = id;
+      n.id = nft_stakes.available_primary_key();
       n.user_name = memo;
       n.nft_name = nft_name;
+      n.level = level;
     });
   }
 }
 
+[[eosio::action]]
+void triliumquest::addnft(std::string user_name, std::string nft_name, uint64_t level) {
+  require_auth(get_self());
+  nftstaging::nft_staging_index nft_stakes(get_self(), get_self().value);
+  nft_stakes.emplace(get_self(), [&](auto& n) {
+      n.id = nft_stakes.available_primary_key();
+      n.user_name = user_name;
+      n.nft_name = nft_name;
+      n.level = level;
+  });
+}
 
+[[eosio::action]]
+void triliumquest::removenft(uint64_t id) {
+    require_auth(get_self());
+    nftstaging::nft_staging_index nft_stakes(get_self(), get_self().value);
+
+    auto iterator = nft_stakes.find(id);
+    eosio::check(iterator != nft_stakes.end(), "Record with the given ID does not exist");
+
+    nft_stakes.erase(iterator);
+}
+
+[[eosio::action]]
+void triliumquest::mintnft(name wax_id, name schema_name, uint32_t template_id, uint64_t level)
+{
+   // Define your collection, templates and schema are passed in
+   name collection_name = "triliumquest"_n;
+
+   /*
+   atomicassets::ATTRIBUTE_MAP mutable_data = {
+     {"level", level}
+   };
+   */
+   
+   atomicassets::ATTRIBUTE_MAP mutable_data;
+
+   // Mint the NFT to the player account
+   action(
+     permission_level{get_self(), "active"_n},
+     "atomicassets"_n,
+     "mintasset"_n,
+     std::make_tuple(get_self(), collection_name, schema_name, template_id, wax_id, vector<atomicassets::ATTRIBUTE_MAP>{}, mutable_data, vector<asset>{})
+   ).send();
+}
 
 [[eosio::on_notify("alien.worlds::transfer")]]
 void triliumquest::deposittlm(name from, name to, asset quantity, std::string memo) {
@@ -122,33 +187,41 @@ void triliumquest::wipeall() {
 }
 
 [[eosio::action]]
-void triliumquest::withdrawnft(uint64_t nft_id, name wax_id, uint64_t level, name schema_name, uint64_t template_id) {
+void triliumquest::withdrawnft(name wax_id, uint64_t id, name schema_name, uint64_t template_id) {
   require_auth(get_self());
 
   // Find the NFT
   nftstaging::nft_staging_index _nfts(get_self(), get_self().value);
-  auto stake = _nfts.find(nft_id);
-  check(stake != _nfts.end(), "NFT is not staked");
+  auto stake = _nfts.find(id);
 
-  // Define your collection and template names
+  check(stake != _nfts.end(), "NFT is not found");
+
+  // Define your collection, templates and schema are passed in
   name collection_name = "triliumquest"_n;
 
-  // Define the level
+  uint32_t level = stake->level;
+  std::string user_name = stake->user_name;
+
+  /*
   atomicassets::ATTRIBUTE_MAP mutable_data = {
     {"level", level}
   };
+  */
+
+  atomicassets::ATTRIBUTE_MAP mutable_data;
 
   // Mint the NFT to the player account
   action(
     permission_level{get_self(), "active"_n},
     "atomicassets"_n,
     "mintasset"_n,
-    std::make_tuple(get_self(), wax_id, collection_name, schema_name, template_id, vector<atomicassets::ATTRIBUTE_MAP>{}, mutable_data, "")
+    std::make_tuple(get_self(), collection_name, schema_name, template_id, wax_id, vector<atomicassets::ATTRIBUTE_MAP>{}, mutable_data, vector<asset>{})
   ).send();
 
   // Remove the NFT record
   _nfts.erase(stake);
 }
+
 
 [[eosio::action]]
 void triliumquest::withdrawtlm(name wax_id) {

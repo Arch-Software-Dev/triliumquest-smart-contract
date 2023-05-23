@@ -22,6 +22,28 @@
             ]
         },
         {
+            "name": "mintnft",
+            "base": "",
+            "fields": [
+                {
+                    "name": "wax_id",
+                    "type": "name"
+                },
+                {
+                    "name": "schema_name",
+                    "type": "name"
+                },
+                {
+                    "name": "template_id",
+                    "type": "uint32"
+                },
+                {
+                    "name": "level",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
             "name": "nftstaging",
             "base": "",
             "fields": [
@@ -39,6 +61,16 @@
                 },
                 {
                     "name": "level",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "removenft",
+            "base": "",
+            "fields": [
+                {
+                    "name": "id",
                     "type": "uint64"
                 }
             ]
@@ -100,6 +132,16 @@
             "name": "addnft",
             "type": "addnft",
             "ricardian_contract": "When a user requests a transfer from game inventory to block chain, the server executes this method to add a record into the NFT staking table on behalf of the player"
+        },
+        {
+            "name": "mintnft",
+            "type": "mintnft",
+            "ricardian_contract": "Administrative function to mint an NFT to a WAX wallet account."
+        },
+        {
+            "name": "removenft",
+            "type": "removenft",
+            "ricardian_contract": "Administrative function to remove a row from the NFT table."
         },
         {
             "name": "wipeall",
