@@ -2,37 +2,37 @@
 	"sources" : 
 	[
 		{
-			"file" : "/opt/src/triliumquest/build/CMakeFiles/triliumquest_project"
+			"file" : "/wax/triliumquest-smart-contract/build/CMakeFiles/triliumquest_project"
 		},
 		{
-			"file" : "/opt/src/triliumquest/build/CMakeFiles/triliumquest_project.rule"
+			"file" : "/wax/triliumquest-smart-contract/build/CMakeFiles/triliumquest_project.rule"
 		},
 		{
-			"file" : "/opt/src/triliumquest/build/CMakeFiles/triliumquest_project-complete.rule"
+			"file" : "/wax/triliumquest-smart-contract/build/CMakeFiles/triliumquest_project-complete.rule"
 		},
 		{
-			"file" : "/opt/src/triliumquest/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-install.rule"
+			"file" : "/wax/triliumquest-smart-contract/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-install.rule"
 		},
 		{
-			"file" : "/opt/src/triliumquest/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-mkdir.rule"
+			"file" : "/wax/triliumquest-smart-contract/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-mkdir.rule"
 		},
 		{
-			"file" : "/opt/src/triliumquest/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-download.rule"
+			"file" : "/wax/triliumquest-smart-contract/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-download.rule"
 		},
 		{
-			"file" : "/opt/src/triliumquest/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-update.rule"
+			"file" : "/wax/triliumquest-smart-contract/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-update.rule"
 		},
 		{
-			"file" : "/opt/src/triliumquest/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-patch.rule"
+			"file" : "/wax/triliumquest-smart-contract/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-patch.rule"
 		},
 		{
-			"file" : "/opt/src/triliumquest/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-configure.rule"
+			"file" : "/wax/triliumquest-smart-contract/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-configure.rule"
 		},
 		{
-			"file" : "/opt/src/triliumquest/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-build.rule"
+			"file" : "/wax/triliumquest-smart-contract/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-build.rule"
 		},
 		{
-			"file" : "/opt/src/triliumquest/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-test.rule"
+			"file" : "/wax/triliumquest-smart-contract/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-test.rule"
 		}
 	],
 	"target" : 

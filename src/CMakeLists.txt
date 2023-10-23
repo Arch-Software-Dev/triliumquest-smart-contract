@@ -1,7 +1,6 @@
 project(triliumquest)
 
-set(EOSIO_WASM_OLD_BEHAVIOR "Off")
-find_package(eosio.cdt)
+find_package(cdt)
 
 add_contract( triliumquest triliumquest triliumquest.cpp )
 target_include_directories( triliumquest PUBLIC ${CMAKE_SOURCE_DIR}/../include )

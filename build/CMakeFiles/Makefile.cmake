@@ -7,14 +7,8 @@ set(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")
 # The top level Makefile was generated from the following files:
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
-  "../CMakeLists.txt"
-  "CMakeFiles/3.10.2/CMakeCCompiler.cmake"
-  "CMakeFiles/3.10.2/CMakeCXXCompiler.cmake"
-  "CMakeFiles/3.10.2/CMakeSystem.cmake"
-  "triliumquest_project-prefix/tmp/triliumquest_project-cfgcmd.txt.in"
-  "/usr/lib/cmake/eosio.cdt/eosio.cdt-config.cmake"
-  "/usr/opt/eosio.cdt/1.6.1/lib/cmake/eosio.cdt/EosioCDTMacros.cmake"
-  "/usr/opt/eosio.cdt/1.6.1/lib/cmake/eosio.cdt/EosioWasmToolchain.cmake"
+  "/tmp/wax-cdt/build/lib/cmake/cdt/CDTMacros.cmake"
+  "/usr/local/cdt/lib/cmake/cdt/cdt-config.cmake"
   "/usr/share/cmake-3.10/Modules/CMakeCInformation.cmake"
   "/usr/share/cmake-3.10/Modules/CMakeCXXInformation.cmake"
   "/usr/share/cmake-3.10/Modules/CMakeCommonLanguageInclude.cmake"
@@ -32,6 +26,11 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/share/cmake-3.10/Modules/Platform/Linux-GNU.cmake"
   "/usr/share/cmake-3.10/Modules/Platform/Linux.cmake"
   "/usr/share/cmake-3.10/Modules/Platform/UnixPaths.cmake"
+  "../CMakeLists.txt"
+  "CMakeFiles/3.10.2/CMakeCCompiler.cmake"
+  "CMakeFiles/3.10.2/CMakeCXXCompiler.cmake"
+  "CMakeFiles/3.10.2/CMakeSystem.cmake"
+  "triliumquest_project-prefix/tmp/triliumquest_project-cfgcmd.txt.in"
   )
 
 # The corresponding makefile is:

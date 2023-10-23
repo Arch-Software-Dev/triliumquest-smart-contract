@@ -21,7 +21,7 @@ CONTRACT triliumquest : public contract {
       void deposittlm(name from, name to, asset quantity, std::string memo);
 
       ACTION withdrawtlm(name wax_id);
-      ACTION addnft(std::string user_name, std::string nft_name, uint64_t level);
+      ACTION addnft(name user_name, std::string nft_name, uint64_t level);
       ACTION removenft(uint64_t id);
       ACTION mintnft(name wax_id, name schema_name, uint32_t template_id, uint64_t level);
 
@@ -38,31 +38,36 @@ CONTRACT triliumquest : public contract {
  private:
       TABLE nftstaging {
 	uint64_t id;
-        std::string user_name;
+        name user_name;
         std::string nft_name;
 	uint64_t level;
 
 	uint64_t primary_key() const { return id; }
+        uint64_t by_user_name() const { return user_name.value; }
 
         // Define the index name and the function to create the index
-        typedef eosio::multi_index<"nftstaging"_n, nftstaging> nft_staging_index;
+        typedef eosio::multi_index<"nftstaging"_n, nftstaging,eosio::indexed_by<"byusername"_n,eosio::const_mem_fun<nftstaging,uint64_t,&nftstaging::by_user_name>>> nft_staging_index;
+
 };
 
      TABLE tlmstaging {
-       std::string user_name;
+       name user_name;
        asset amount;
-       uint64_t primary_key() const { return static_cast<uint64_t>(*reinterpret_cast<const uint64_t *>(get_user_name().data())); }
+//        uint64_t primary_key() const { return static_cast<uint64_t>(*reinterpret_cast<const uint64_t *>(get_user_name().data()));
+        uint64_t primary_key() const { return user_name.value; }
+       // Define the index name and the function to create the index
+       typedef eosio::multi_index<"tlmstaging"_n, tlmstaging> tlm_staging_index;
+        };
 
-       // Secondary index for user_name
-       eosio::checksum256 get_user_name() const { return eosio::sha256(user_name.c_str(), user_name.size()); }
+       // Secondary index for user_name 
+//        eosio::checksum256 get_user_name() const { return eosio::sha256(user_name.c_str(), user_name.size()); }  // no need for secondary 
+       
+
 
        // Define the index name and the function to create the index
-       typedef eosio::multi_index<"tlmstaging"_n, tlmstaging,
-        eosio::indexed_by<"byusername"_n, eosio::const_mem_fun<tlmstaging, eosio::checksum256, &tlmstaging::get_user_name>>> tlm_staging_index;
+       typedef eosio::multi_index<"tlmstaging"_n, tlmstaging> tlm_staging_index;
+
      };
 
-typedef eosio::multi_index<"tlmstaging"_n, tlmstaging,
- eosio::indexed_by<"byusername"_n, eosio::const_mem_fun<tlmstaging, eosio::checksum256, &tlmstaging::get_user_name>>> tlm_staging_index;
 
 
-};

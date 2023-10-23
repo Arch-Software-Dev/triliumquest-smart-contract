@@ -4,13 +4,13 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/opt/src/triliumquest/src/triliumquest.cpp" "/opt/src/triliumquest/build/triliumquest/CMakeFiles/triliumquest.dir/triliumquest.obj"
+  "/wax/triliumquest-smart-contract/src/triliumquest.cpp" "/wax/triliumquest-smart-contract/build/triliumquest/CMakeFiles/triliumquest.dir/triliumquest.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "Clang")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/opt/src/triliumquest/src/../include"
+  "/wax/triliumquest-smart-contract/src/../include"
   )
 
 # Targets to which this target links.

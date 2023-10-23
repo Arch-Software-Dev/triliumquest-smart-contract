@@ -1,3 +1,3 @@
-/opt/src/triliumquest/build/triliumquest/CMakeFiles/rebuild_cache.dir
-/opt/src/triliumquest/build/triliumquest/CMakeFiles/triliumquest.dir
-/opt/src/triliumquest/build/triliumquest/CMakeFiles/edit_cache.dir
+/wax/triliumquest-smart-contract/build/triliumquest/CMakeFiles/rebuild_cache.dir
+/wax/triliumquest-smart-contract/build/triliumquest/CMakeFiles/triliumquest.dir
+/wax/triliumquest-smart-contract/build/triliumquest/CMakeFiles/edit_cache.dir

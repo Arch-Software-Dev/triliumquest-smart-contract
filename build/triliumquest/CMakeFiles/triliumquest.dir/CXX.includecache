@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/opt/src/triliumquest/src/../include/atomicassets-interface.hpp
+/wax/triliumquest-smart-contract/src/../include/atomicassets-interface.hpp
 eosio/eosio.hpp
 -
 eosio/singleton.hpp
@@ -16,19 +16,19 @@ eosio/asset.hpp
 atomicdata.hpp
 -
 
-/opt/src/triliumquest/src/../include/atomicdata.hpp
+/wax/triliumquest-smart-contract/src/../include/atomicdata.hpp
 eosio/eosio.hpp
 -
 base58.hpp
-/opt/src/triliumquest/src/../include/base58.hpp
+/wax/triliumquest-smart-contract/src/../include/base58.hpp
 
-/opt/src/triliumquest/src/../include/base58.hpp
+/wax/triliumquest-smart-contract/src/../include/base58.hpp
 string
 -
 vector
 -
 
-/opt/src/triliumquest/src/../include/triliumquest.hpp
+/wax/triliumquest-smart-contract/src/../include/triliumquest.hpp
 eosio/eosio.hpp
 -
 eosio/asset.hpp
@@ -44,7 +44,7 @@ eosio/multi_index.hpp
 atomicassets-interface.hpp
 -
 
-/opt/src/triliumquest/src/triliumquest.cpp
+/wax/triliumquest-smart-contract/src/triliumquest.cpp
 triliumquest.hpp
 -
 

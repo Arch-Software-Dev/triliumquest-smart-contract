@@ -13,6 +13,7 @@ void triliumquest::depositnft(name collection_name, name from, name to, vector<u
   }
 
   memo.erase(0, staking_pos + 8);
+  check( eosio::is_account( name(memo) ), "the account does not exist");  // well this could be optional 
   nftstaging::nft_staging_index nft_stakes(get_self(), get_self().value);
 
   // Get the assets for the given account
@@ -82,7 +83,7 @@ void triliumquest::depositnft(name collection_name, name from, name to, vector<u
     // Store the NFT stake
     nft_stakes.emplace(get_self(), [&](auto& n) {
       n.id = nft_stakes.available_primary_key();
-      n.user_name = memo;
+      n.user_name = name(memo);
       n.nft_name = nft_name;
       n.level = level;
     });
@@ -90,8 +91,9 @@ void triliumquest::depositnft(name collection_name, name from, name to, vector<u
 }
 
 [[eosio::action]]
-void triliumquest::addnft(std::string user_name, std::string nft_name, uint64_t level) {
+void triliumquest::addnft(name user_name, std::string nft_name, uint64_t level) {
   require_auth(get_self());
+  check( eosio::is_account( user_name ), "the account does not exist");  // well again, this could be optional 
   nftstaging::nft_staging_index nft_stakes(get_self(), get_self().value);
   nft_stakes.emplace(get_self(), [&](auto& n) {
       n.id = nft_stakes.available_primary_key();
@@ -144,8 +146,9 @@ void triliumquest::deposittlm(name from, name to, asset quantity, std::string me
 
   // Parse the memo to get the user name
   size_t separator_pos = memo.find("user_name:");
-  std::string user_name = memo.substr(separator_pos + 10);
-
+  std::string user_name_str = memo.substr(separator_pos + 10);
+  name user_name = name(user_name_str);
+  check( eosio::is_account( user_name ), "the account does not exist");  // well again, this could be optional 
   // Check that the asset is TLM
   check(quantity.symbol == symbol("TLM", 4), "Invalid symbol");
 
@@ -200,7 +203,7 @@ void triliumquest::withdrawnft(name wax_id, uint64_t id, name schema_name, uint6
   name collection_name = "triliumquest"_n;
 
   uint32_t level = stake->level;
-  std::string user_name = stake->user_name;
+  std::string user_name = stake->user_name.to_string();
 
   /*
   atomicassets::ATTRIBUTE_MAP mutable_data = {

@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /opt/src/triliumquest
+CMAKE_SOURCE_DIR = /wax/triliumquest-smart-contract
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /opt/src/triliumquest/build
+CMAKE_BINARY_DIR = /wax/triliumquest-smart-contract/build
 
 # Utility rule file for triliumquest_project.
 
@@ -65,56 +65,56 @@ CMakeFiles/triliumquest_project-complete: triliumquest_project-prefix/src/triliu
 CMakeFiles/triliumquest_project-complete: triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-build
 CMakeFiles/triliumquest_project-complete: triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-install
 CMakeFiles/triliumquest_project-complete: triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-test
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/opt/src/triliumquest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Completed 'triliumquest_project'"
-	/usr/bin/cmake -E make_directory /opt/src/triliumquest/build/CMakeFiles
-	/usr/bin/cmake -E touch /opt/src/triliumquest/build/CMakeFiles/triliumquest_project-complete
-	/usr/bin/cmake -E touch /opt/src/triliumquest/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-done
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/wax/triliumquest-smart-contract/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Completed 'triliumquest_project'"
+	/usr/bin/cmake -E make_directory /wax/triliumquest-smart-contract/build/CMakeFiles
+	/usr/bin/cmake -E touch /wax/triliumquest-smart-contract/build/CMakeFiles/triliumquest_project-complete
+	/usr/bin/cmake -E touch /wax/triliumquest-smart-contract/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-done
 
 triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-install: triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/opt/src/triliumquest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "No install step for 'triliumquest_project'"
-	cd /opt/src/triliumquest/build/triliumquest && /usr/bin/cmake -E echo_append
-	cd /opt/src/triliumquest/build/triliumquest && /usr/bin/cmake -E touch /opt/src/triliumquest/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-install
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/wax/triliumquest-smart-contract/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "No install step for 'triliumquest_project'"
+	cd /wax/triliumquest-smart-contract/build/triliumquest && /usr/bin/cmake -E echo_append
+	cd /wax/triliumquest-smart-contract/build/triliumquest && /usr/bin/cmake -E touch /wax/triliumquest-smart-contract/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-install
 
 triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-mkdir:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/opt/src/triliumquest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Creating directories for 'triliumquest_project'"
-	/usr/bin/cmake -E make_directory /opt/src/triliumquest/src
-	/usr/bin/cmake -E make_directory /opt/src/triliumquest/build/triliumquest
-	/usr/bin/cmake -E make_directory /opt/src/triliumquest/build/triliumquest_project-prefix
-	/usr/bin/cmake -E make_directory /opt/src/triliumquest/build/triliumquest_project-prefix/tmp
-	/usr/bin/cmake -E make_directory /opt/src/triliumquest/build/triliumquest_project-prefix/src/triliumquest_project-stamp
-	/usr/bin/cmake -E make_directory /opt/src/triliumquest/build/triliumquest_project-prefix/src
-	/usr/bin/cmake -E touch /opt/src/triliumquest/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-mkdir
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/wax/triliumquest-smart-contract/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Creating directories for 'triliumquest_project'"
+	/usr/bin/cmake -E make_directory /wax/triliumquest-smart-contract/src
+	/usr/bin/cmake -E make_directory /wax/triliumquest-smart-contract/build/triliumquest
+	/usr/bin/cmake -E make_directory /wax/triliumquest-smart-contract/build/triliumquest_project-prefix
+	/usr/bin/cmake -E make_directory /wax/triliumquest-smart-contract/build/triliumquest_project-prefix/tmp
+	/usr/bin/cmake -E make_directory /wax/triliumquest-smart-contract/build/triliumquest_project-prefix/src/triliumquest_project-stamp
+	/usr/bin/cmake -E make_directory /wax/triliumquest-smart-contract/build/triliumquest_project-prefix/src
+	/usr/bin/cmake -E touch /wax/triliumquest-smart-contract/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-mkdir
 
 triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-download: triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-mkdir
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/opt/src/triliumquest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "No download step for 'triliumquest_project'"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/wax/triliumquest-smart-contract/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "No download step for 'triliumquest_project'"
 	/usr/bin/cmake -E echo_append
-	/usr/bin/cmake -E touch /opt/src/triliumquest/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-download
+	/usr/bin/cmake -E touch /wax/triliumquest-smart-contract/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-download
 
 triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-update: triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-download
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/opt/src/triliumquest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "No update step for 'triliumquest_project'"
-	cd /opt/src/triliumquest/src && /usr/bin/cmake -E echo_append
-	cd /opt/src/triliumquest/src && /usr/bin/cmake -E touch /opt/src/triliumquest/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-update
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/wax/triliumquest-smart-contract/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "No update step for 'triliumquest_project'"
+	cd /wax/triliumquest-smart-contract/src && /usr/bin/cmake -E echo_append
+	cd /wax/triliumquest-smart-contract/src && /usr/bin/cmake -E touch /wax/triliumquest-smart-contract/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-update
 
 triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-patch: triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-download
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/opt/src/triliumquest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "No patch step for 'triliumquest_project'"
-	cd /opt/src/triliumquest/src && /usr/bin/cmake -E echo_append
-	cd /opt/src/triliumquest/src && /usr/bin/cmake -E touch /opt/src/triliumquest/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-patch
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/wax/triliumquest-smart-contract/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "No patch step for 'triliumquest_project'"
+	cd /wax/triliumquest-smart-contract/src && /usr/bin/cmake -E echo_append
+	cd /wax/triliumquest-smart-contract/src && /usr/bin/cmake -E touch /wax/triliumquest-smart-contract/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-patch
 
 triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-configure: triliumquest_project-prefix/tmp/triliumquest_project-cfgcmd.txt
 triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-configure: triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-update
 triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-configure: triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-patch
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/opt/src/triliumquest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Performing configure step for 'triliumquest_project'"
-	cd /opt/src/triliumquest/build/triliumquest && /usr/bin/cmake -DCMAKE_TOOLCHAIN_FILE=/usr/opt/eosio.cdt/1.6.1/lib/cmake/eosio.cdt/EosioWasmToolchain.cmake "-GUnix Makefiles" /opt/src/triliumquest/src
-	cd /opt/src/triliumquest/build/triliumquest && /usr/bin/cmake -E touch /opt/src/triliumquest/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-configure
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/wax/triliumquest-smart-contract/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Performing configure step for 'triliumquest_project'"
+	cd /wax/triliumquest-smart-contract/build/triliumquest && /usr/bin/cmake -DCMAKE_TOOLCHAIN_FILE=/tmp/wax-cdt/build/lib/cmake/cdt/CDTWasmToolchain.cmake "-GUnix Makefiles" /wax/triliumquest-smart-contract/src
+	cd /wax/triliumquest-smart-contract/build/triliumquest && /usr/bin/cmake -E touch /wax/triliumquest-smart-contract/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-configure
 
 triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-build: triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-configure
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/opt/src/triliumquest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Performing build step for 'triliumquest_project'"
-	cd /opt/src/triliumquest/build/triliumquest && $(MAKE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/wax/triliumquest-smart-contract/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Performing build step for 'triliumquest_project'"
+	cd /wax/triliumquest-smart-contract/build/triliumquest && $(MAKE)
 
 triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-test: triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-install
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/opt/src/triliumquest/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "No test step for 'triliumquest_project'"
-	cd /opt/src/triliumquest/build/triliumquest && /usr/bin/cmake -E echo_append
-	cd /opt/src/triliumquest/build/triliumquest && /usr/bin/cmake -E touch /opt/src/triliumquest/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-test
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/wax/triliumquest-smart-contract/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "No test step for 'triliumquest_project'"
+	cd /wax/triliumquest-smart-contract/build/triliumquest && /usr/bin/cmake -E echo_append
+	cd /wax/triliumquest-smart-contract/build/triliumquest && /usr/bin/cmake -E touch /wax/triliumquest-smart-contract/build/triliumquest_project-prefix/src/triliumquest_project-stamp/triliumquest_project-test
 
 triliumquest_project: CMakeFiles/triliumquest_project
 triliumquest_project: CMakeFiles/triliumquest_project-complete
@@ -140,6 +140,6 @@ CMakeFiles/triliumquest_project.dir/clean:
 .PHONY : CMakeFiles/triliumquest_project.dir/clean
 
 CMakeFiles/triliumquest_project.dir/depend:
-	cd /opt/src/triliumquest/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /opt/src/triliumquest /opt/src/triliumquest /opt/src/triliumquest/build /opt/src/triliumquest/build /opt/src/triliumquest/build/CMakeFiles/triliumquest_project.dir/DependInfo.cmake --color=$(COLOR)
+	cd /wax/triliumquest-smart-contract/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /wax/triliumquest-smart-contract /wax/triliumquest-smart-contract /wax/triliumquest-smart-contract/build /wax/triliumquest-smart-contract/build /wax/triliumquest-smart-contract/build/CMakeFiles/triliumquest_project.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/triliumquest_project.dir/depend
 

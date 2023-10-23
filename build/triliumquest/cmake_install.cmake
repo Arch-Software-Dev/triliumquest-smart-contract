@@ -1,4 +1,4 @@
-# Install script for directory: /opt/src/triliumquest/src
+# Install script for directory: /wax/triliumquest-smart-contract/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/opt/src/triliumquest/build/triliumquest/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/wax/triliumquest-smart-contract/build/triliumquest/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
