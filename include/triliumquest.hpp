@@ -19,6 +19,9 @@ CONTRACT triliumquest : public contract {
       [[eosio::on_notify("atomicassets::logtransfer")]]
       void depositnft(name collection_name, name from, name to, vector<uint64_t> asset_ids, string memo);
 
+           [[eosio::on_notify("atomicassets::transfer")]]
+      void transfernft( name from, name to, vector<uint64_t> asset_ids, string memo);
+
       ACTION withdrawnft(name wax_id, uint64_t id, name schema_name, uint64_t template_id);
 
       [[eosio::on_notify("alien.worlds::transfer")]]

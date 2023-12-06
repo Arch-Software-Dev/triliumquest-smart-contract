@@ -23,22 +23,22 @@ Exit due to wasm-ld failure
 Detecting C compiler ABI info failed to compile with the following output:
 Change Dir: /wax/triliumquest-smart-contract/build/triliumquest/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_1464d/fast"
+Run Build Command:"/usr/bin/make" "cmTC_ad54e/fast"
 make[3]: Entering directory '/wax/triliumquest-smart-contract/build/triliumquest/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTC_1464d.dir/build.make CMakeFiles/cmTC_1464d.dir/build
+/usr/bin/make -f CMakeFiles/cmTC_ad54e.dir/build.make CMakeFiles/cmTC_ad54e.dir/build
 make[4]: Entering directory '/wax/triliumquest-smart-contract/build/triliumquest/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_1464d.dir/CMakeCCompilerABI.c.obj
-/tmp/wax-cdt/build/bin/cdt-cc    -o CMakeFiles/cmTC_1464d.dir/CMakeCCompilerABI.c.obj   -c /usr/share/cmake-3.10/Modules/CMakeCCompilerABI.c
-Linking C executable cmTC_1464d.wasm
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1464d.dir/link.txt --verbose=1
-/tmp/wax-cdt/build/bin/cdt-ld  -v CMakeFiles/cmTC_1464d.dir/CMakeCCompilerABI.c.obj -o cmTC_1464d.wasm 
+Building C object CMakeFiles/cmTC_ad54e.dir/CMakeCCompilerABI.c.obj
+/tmp/wax-cdt/build/bin/cdt-cc    -o CMakeFiles/cmTC_ad54e.dir/CMakeCCompilerABI.c.obj   -c /usr/share/cmake-3.10/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_ad54e.wasm
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ad54e.dir/link.txt --verbose=1
+/tmp/wax-cdt/build/bin/cdt-ld  -v CMakeFiles/cmTC_ad54e.dir/CMakeCCompilerABI.c.obj -o cmTC_ad54e.wasm 
 cdt-ld: Unknown command line argument '-v'.  Try: '/tmp/wax-cdt/build/bin/cdt-ld --help'
 cdt-ld: Did you mean '  -L'?
-CMakeFiles/cmTC_1464d.dir/build.make:97: recipe for target 'cmTC_1464d.wasm' failed
-make[4]: *** [cmTC_1464d.wasm] Error 1
+CMakeFiles/cmTC_ad54e.dir/build.make:97: recipe for target 'cmTC_ad54e.wasm' failed
+make[4]: *** [cmTC_ad54e.wasm] Error 1
 make[4]: Leaving directory '/wax/triliumquest-smart-contract/build/triliumquest/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_1464d/fast' failed
-make[3]: *** [cmTC_1464d/fast] Error 2
+Makefile:126: recipe for target 'cmTC_ad54e/fast' failed
+make[3]: *** [cmTC_ad54e/fast] Error 2
 make[3]: Leaving directory '/wax/triliumquest-smart-contract/build/triliumquest/CMakeFiles/CMakeTmp'
 
 
@@ -46,19 +46,19 @@ make[3]: Leaving directory '/wax/triliumquest-smart-contract/build/triliumquest/
 Detecting C [-std=c11] compiler features failed to compile with the following output:
 Change Dir: /wax/triliumquest-smart-contract/build/triliumquest/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_c1194/fast"
+Run Build Command:"/usr/bin/make" "cmTC_f0252/fast"
 make[3]: Entering directory '/wax/triliumquest-smart-contract/build/triliumquest/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTC_c1194.dir/build.make CMakeFiles/cmTC_c1194.dir/build
+/usr/bin/make -f CMakeFiles/cmTC_f0252.dir/build.make CMakeFiles/cmTC_f0252.dir/build
 make[4]: Entering directory '/wax/triliumquest-smart-contract/build/triliumquest/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_c1194.dir/feature_tests.c.obj
-/tmp/wax-cdt/build/bin/cdt-cc   -std=c11 -o CMakeFiles/cmTC_c1194.dir/feature_tests.c.obj   -c /wax/triliumquest-smart-contract/build/triliumquest/CMakeFiles/feature_tests.c
+Building C object CMakeFiles/cmTC_f0252.dir/feature_tests.c.obj
+/tmp/wax-cdt/build/bin/cdt-cc   -std=c11 -o CMakeFiles/cmTC_f0252.dir/feature_tests.c.obj   -c /wax/triliumquest-smart-contract/build/triliumquest/CMakeFiles/feature_tests.c
 cdt-cc: Unknown command line argument '-std=c11'.  Try: '/tmp/wax-cdt/build/bin/cdt-cc --help'
 cdt-cc: Did you mean '  --dD=c11'?
-CMakeFiles/cmTC_c1194.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_c1194.dir/feature_tests.c.obj' failed
-make[4]: *** [CMakeFiles/cmTC_c1194.dir/feature_tests.c.obj] Error 1
+CMakeFiles/cmTC_f0252.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_f0252.dir/feature_tests.c.obj' failed
+make[4]: *** [CMakeFiles/cmTC_f0252.dir/feature_tests.c.obj] Error 1
 make[4]: Leaving directory '/wax/triliumquest-smart-contract/build/triliumquest/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_c1194/fast' failed
-make[3]: *** [cmTC_c1194/fast] Error 2
+Makefile:126: recipe for target 'cmTC_f0252/fast' failed
+make[3]: *** [cmTC_f0252/fast] Error 2
 make[3]: Leaving directory '/wax/triliumquest-smart-contract/build/triliumquest/CMakeFiles/CMakeTmp'
 
 
@@ -66,22 +66,22 @@ make[3]: Leaving directory '/wax/triliumquest-smart-contract/build/triliumquest/
 Detecting CXX compiler ABI info failed to compile with the following output:
 Change Dir: /wax/triliumquest-smart-contract/build/triliumquest/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_c070a/fast"
+Run Build Command:"/usr/bin/make" "cmTC_4d425/fast"
 make[3]: Entering directory '/wax/triliumquest-smart-contract/build/triliumquest/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTC_c070a.dir/build.make CMakeFiles/cmTC_c070a.dir/build
+/usr/bin/make -f CMakeFiles/cmTC_4d425.dir/build.make CMakeFiles/cmTC_4d425.dir/build
 make[4]: Entering directory '/wax/triliumquest-smart-contract/build/triliumquest/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_c070a.dir/CMakeCXXCompilerABI.cpp.obj
-/tmp/wax-cdt/build/bin/cdt-cpp     -o CMakeFiles/cmTC_c070a.dir/CMakeCXXCompilerABI.cpp.obj -c /usr/share/cmake-3.10/Modules/CMakeCXXCompilerABI.cpp
-Linking CXX executable cmTC_c070a.wasm
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c070a.dir/link.txt --verbose=1
-/tmp/wax-cdt/build/bin/cdt-ld  -v CMakeFiles/cmTC_c070a.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_c070a.wasm 
+Building CXX object CMakeFiles/cmTC_4d425.dir/CMakeCXXCompilerABI.cpp.obj
+/tmp/wax-cdt/build/bin/cdt-cpp     -o CMakeFiles/cmTC_4d425.dir/CMakeCXXCompilerABI.cpp.obj -c /usr/share/cmake-3.10/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTC_4d425.wasm
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4d425.dir/link.txt --verbose=1
+/tmp/wax-cdt/build/bin/cdt-ld  -v CMakeFiles/cmTC_4d425.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_4d425.wasm 
 cdt-ld: Unknown command line argument '-v'.  Try: '/tmp/wax-cdt/build/bin/cdt-ld --help'
 cdt-ld: Did you mean '  -L'?
-CMakeFiles/cmTC_c070a.dir/build.make:97: recipe for target 'cmTC_c070a.wasm' failed
-make[4]: *** [cmTC_c070a.wasm] Error 1
+CMakeFiles/cmTC_4d425.dir/build.make:97: recipe for target 'cmTC_4d425.wasm' failed
+make[4]: *** [cmTC_4d425.wasm] Error 1
 make[4]: Leaving directory '/wax/triliumquest-smart-contract/build/triliumquest/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_c070a/fast' failed
-make[3]: *** [cmTC_c070a/fast] Error 2
+Makefile:126: recipe for target 'cmTC_4d425/fast' failed
+make[3]: *** [cmTC_4d425/fast] Error 2
 make[3]: Leaving directory '/wax/triliumquest-smart-contract/build/triliumquest/CMakeFiles/CMakeTmp'
 
 
@@ -89,22 +89,22 @@ make[3]: Leaving directory '/wax/triliumquest-smart-contract/build/triliumquest/
 Detecting CXX [-std=c++1z] compiler features failed to compile with the following output:
 Change Dir: /wax/triliumquest-smart-contract/build/triliumquest/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_92f7e/fast"
+Run Build Command:"/usr/bin/make" "cmTC_81956/fast"
 make[3]: Entering directory '/wax/triliumquest-smart-contract/build/triliumquest/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTC_92f7e.dir/build.make CMakeFiles/cmTC_92f7e.dir/build
+/usr/bin/make -f CMakeFiles/cmTC_81956.dir/build.make CMakeFiles/cmTC_81956.dir/build
 make[4]: Entering directory '/wax/triliumquest-smart-contract/build/triliumquest/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_92f7e.dir/feature_tests.cxx.obj
-/tmp/wax-cdt/build/bin/cdt-cpp    -std=c++1z -o CMakeFiles/cmTC_92f7e.dir/feature_tests.cxx.obj -c /wax/triliumquest-smart-contract/build/triliumquest/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_92f7e.wasm
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_92f7e.dir/link.txt --verbose=1
-/tmp/wax-cdt/build/bin/cdt-ld   CMakeFiles/cmTC_92f7e.dir/feature_tests.cxx.obj -o cmTC_92f7e.wasm 
+Building CXX object CMakeFiles/cmTC_81956.dir/feature_tests.cxx.obj
+/tmp/wax-cdt/build/bin/cdt-cpp    -std=c++1z -o CMakeFiles/cmTC_81956.dir/feature_tests.cxx.obj -c /wax/triliumquest-smart-contract/build/triliumquest/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_81956.wasm
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_81956.dir/link.txt --verbose=1
+/tmp/wax-cdt/build/bin/cdt-ld   CMakeFiles/cmTC_81956.dir/feature_tests.cxx.obj -o cmTC_81956.wasm 
 wasm-ld: error: fatal failure: contract with no actions and trying to create dispatcher
 Exit due to wasm-ld failure
-CMakeFiles/cmTC_92f7e.dir/build.make:97: recipe for target 'cmTC_92f7e.wasm' failed
-make[4]: *** [cmTC_92f7e.wasm] Error 255
+CMakeFiles/cmTC_81956.dir/build.make:97: recipe for target 'cmTC_81956.wasm' failed
+make[4]: *** [cmTC_81956.wasm] Error 255
 make[4]: Leaving directory '/wax/triliumquest-smart-contract/build/triliumquest/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_92f7e/fast' failed
-make[3]: *** [cmTC_92f7e/fast] Error 2
+Makefile:126: recipe for target 'cmTC_81956/fast' failed
+make[3]: *** [cmTC_81956/fast] Error 2
 make[3]: Leaving directory '/wax/triliumquest-smart-contract/build/triliumquest/CMakeFiles/CMakeTmp'
 
 

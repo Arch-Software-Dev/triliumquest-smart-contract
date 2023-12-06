@@ -60,7 +60,7 @@ void triliumquest::depositnft(name collection_name, name from, name to, vector<u
 
     // If found, update the level variable
     if (level_it != mutable_data.end()) {
-  // Extract the std::string from the std::variant
+	// Extract the std::string from the std::variant
         std::string level_str = std::get<std::string>(level_it->second);
     
         // Convert the std::string to an integer
@@ -78,7 +78,6 @@ void triliumquest::depositnft(name collection_name, name from, name to, vector<u
       std::make_tuple(to, id)
     ).send();
     */
-
     // Store the NFT stake
     nft_stakes.emplace(get_self(), [&](auto& n) {
       n.id = nft_stakes.available_primary_key();
@@ -88,6 +87,229 @@ void triliumquest::depositnft(name collection_name, name from, name to, vector<u
     });
   }
 }
+
+[[eosio::on_notify("atomicassets::transfer")]]
+void triliumquest::transfernft( name from, name to, vector<uint64_t> asset_ids, string memo) { 
+
+  if (to != get_self() ) {
+    return;
+  }
+
+  // Parse the memo for the user_name
+  size_t staking_pos = memo.find("staking%");
+  if (staking_pos == std::string::npos) {
+    return;
+  }
+
+  memo.erase(0, staking_pos + 8);
+  nftstaging::nft_staging_index nft_stakes(get_self(), get_self().value);
+
+  // Get the assets for the given account
+  atomicassets::assets_t assets = atomicassets::get_assets(to);
+
+  for (const auto& id : asset_ids) {
+    // Find the asset with the given id
+    auto itA = assets.find(id);
+    if (itA == assets.end()) continue;
+   
+    auto template_id = itA->template_id;
+    // check if staking from other collections that we dont support-- reject whole transaction
+    check((itA->collection_name == "testo.worlds"_n || itA->collection_name == "testp.worlds"_n),"can't stake collection from "+ itA->collection_name.to_string());
+
+    // Get templates for the given collection
+    atomicassets::templates_t templates_table = atomicassets::get_templates(itA->collection_name);
+
+    // Find the template with the given ID
+    auto it = templates_table.find(template_id);
+    if (it == templates_table.end()) {
+        // Template not found
+        return;
+    }
+
+    // Get the schema for the template
+    auto schemas = atomicassets::get_schemas(itA->collection_name);
+    const auto& schema_id = it->schema_name.value;
+    auto schema_it = schemas.find(schema_id);
+    if (schema_it == schemas.end()) {
+        // handle error
+    }
+
+    // Deserialize the immutable data using the schema format
+    ATTRIBUTE_MAP immutable_data = atomicdata::deserialize(it->immutable_serialized_data, schema_it->format);
+
+    // Extract the attribute you need (e.g. "name")
+    auto name_it = immutable_data.find("name");
+    
+    // Deserialize the mutable data using the schema format
+    ATTRIBUTE_MAP mutable_data = atomicdata::deserialize(itA->mutable_serialized_data, schema_it->format);
+
+    // default of 1
+    uint64_t level = 1;
+
+    // Search for the "level" attribute in mutable data
+    auto level_it = mutable_data.find("level");
+
+    // If found, update the level variable
+    if (level_it != mutable_data.end()) {
+	// Extract the std::string from the std::variant
+        std::string level_str = std::get<std::string>(level_it->second);
+    
+        // Convert the std::string to an integer
+        level = atoi(level_str.c_str());
+    }
+
+    const auto& nft_name = name_it != immutable_data.end() ? std::get<std::string>(name_it->second) : "Name not found";;
+
+    // Burn the NFT
+    /*
+    eosio::action(
+      eosio::permission_level{to, "active"_n},
+      "atomicassets"_n,
+      "burnasset"_n,
+      std::make_tuple(to, id)
+    ).send();
+    */
+    // Store the NFT stake
+    nft_stakes.emplace(get_self(), [&](auto& n) {
+      n.id = nft_stakes.available_primary_key();
+      n.user_name = memo;
+      n.nft_name = nft_name;
+      n.level = level;
+    });
+  }
+}
+
+// [[eosio::on_notify("atomicassets::transfer")]]
+// void triliumquest::transfernft( name from, name to, vector<uint64_t> asset_ids, string memo) { 
+
+
+//   if (to != get_self() ) {
+//     return;
+//   }
+
+//   // Parse the memo for the user_name
+//   size_t staking_pos = memo.find("staking%");
+//   if (staking_pos == std::string::npos) {
+//     return;
+//   }
+//   memo.erase(0, staking_pos + 8);
+
+
+//   name collection_name ;
+
+//   for (auto id : asset_ids) {
+//     atomicassets::assets_t assets = atomicassets::get_assets(to);
+
+//     // Check what asset got received
+//     auto itA = assets.find(id);
+
+//     if (itA != assets.end()) {
+//     collection_name = itA->collection_name;
+//     }
+    
+//     // check if staking from other collections that we dont support-- reject whole transaction
+//     check((!(collection_name == "testo.worlds"_n || collection_name == "testp.worlds"_n),"can't stake collection from "+ collection_name.to_string()));
+
+//   nftstaging::nft_staging_index nft_stakes(get_self(), get_self().value);
+
+//   // Get the assets for the given account
+//   atomicassets::assets_t assets = atomicassets::get_assets(to);
+
+//   for (const auto& id : asset_ids) {
+//     // Find the asset with the given id
+//     auto itA = assets.find(id);
+//     if (itA == assets.end()) continue;
+   
+//     auto template_id = itA->template_id;
+
+//     // Get templates for the given collection
+//     atomicassets::templates_t templates_table_tr = atomicassets::get_templates(collection_name);
+//     atomicassets::templates_t templates_table_to = atomicassets::get_templates(collection_name);
+//     atomicassets::templates_t templates_table_tp = atomicassets::get_templates(collection_name);
+
+//     // Find the template with the given ID
+//     auto it_tr = templates_table_tr.find(template_id);
+//     auto it_to = templates_table_to.find(template_id);
+//     auto it_tp = templates_table_tp.find(template_id);
+
+
+//     if (it_tr == templates_table_tr.end() && it_to == templates_table_to.end() && it_tp == templates_table_tp.end()) {
+//         // Template not found
+//     check(false,"no templ");
+       
+//         return;
+//     }
+//       auto it = templates_table_tr.end(); // initializing 
+
+//     if(it_tr != templates_table_tr.end()){
+      
+//        it = it_tr;
+//     }
+
+//     if(it_to != templates_table_to.end()){
+//               it = it_to;
+//     }
+//     if(it_tp != templates_table_tp.end()){
+//        it = it_tp;
+//     }
+//     if(it==templates_table_tp.end()){
+//     check(false,"no in it");
+
+//     }
+//     // Get the schema for the template
+//     auto schemas = atomicassets::get_schemas(collection_name);
+//     const auto& schema_id = it->schema_name.value;
+//     auto schema_it = schemas.find(schema_id);
+//     if (schema_it == schemas.end()) {
+//         // handle error
+//     }
+
+//     // Deserialize the immutable data using the schema format
+//     ATTRIBUTE_MAP immutable_data = atomicdata::deserialize(it->immutable_serialized_data, schema_it->format);
+
+//     // Extract the attribute you need (e.g. "name")
+//     auto name_it = immutable_data.find("name");
+    
+//     // Deserialize the mutable data using the schema format
+//     ATTRIBUTE_MAP mutable_data = atomicdata::deserialize(itA->mutable_serialized_data, schema_it->format);
+
+//     // default of 1
+//     uint64_t level = 1;
+
+//     // Search for the "level" attribute in mutable data
+//     auto level_it = mutable_data.find("level");
+
+//     // If found, update the level variable
+//     if (level_it != mutable_data.end()) {
+//   // Extract the std::string from the std::variant
+//         std::string level_str = std::get<std::string>(level_it->second);
+    
+//         // Convert the std::string to an integer
+//         level = atoi(level_str.c_str());
+//     }
+
+//     const auto& nft_name = name_it != immutable_data.end() ? std::get<std::string>(name_it->second) : "Name not found";;
+
+//     // Burn the NFT
+//     /*
+//     eosio::action(
+//       eosio::permission_level{to, "active"_n},
+//       "atomicassets"_n,
+//       "burnasset"_n,
+//       std::make_tuple(to, id)
+//     ).send();
+//     */
+
+//     // Store the NFT stake
+//     nft_stakes.emplace(get_self(), [&](auto& n) {
+//       n.id = nft_stakes.available_primary_key();
+//       n.user_name = memo;
+//       n.nft_name = nft_name;
+//       n.level = level;
+//     });
+//   }
+//  }
+// }
 
 [[eosio::action]]
 void triliumquest::addnft(std::string user_name, std::string nft_name, uint64_t level) {
