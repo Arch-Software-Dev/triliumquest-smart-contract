@@ -62,6 +62,10 @@
                 {
                     "name": "level",
                     "type": "uint64"
+                },
+                {
+                    "name": "collection",
+                    "type": "name"
                 }
             ]
         },
